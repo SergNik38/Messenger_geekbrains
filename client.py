@@ -7,7 +7,7 @@ from common.utils import get_message, send_message
 
 class Client:
 
-    def __init__(self, account_name, server_address=DEFAULT_IP_ADDRESS, server_port=DEFAULT_PORT):
+    def __init__(self, account_name='Guest', server_address=DEFAULT_IP_ADDRESS, server_port=DEFAULT_PORT):
         self.server_address = server_address
         self.server_port = int(server_port)
         self.account_name = account_name
@@ -26,7 +26,7 @@ class Client:
         if RESPONSE in message:
             if message[RESPONSE] == 200:
                 return 'OK'
-            return 'ERROR'
+            return f'400 : {message[ERROR]}'
         raise ValueError
 
     def main(self):
@@ -45,5 +45,5 @@ class Client:
 
 
 if __name__ == '__main__':
-    client = Client('Guest', '192.168.0.101', '8888')
+    client = Client()
     client.main()
