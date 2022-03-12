@@ -50,7 +50,6 @@ class Client:
             print(answer)
         except ValueError:
             self.CLIENT_LOGGER.error('Decoding error')
-            print('Не удалось декодировать сообщение')
 
 
 if __name__ == '__main__':

@@ -48,7 +48,6 @@ class Server:
                 client.close()
             except ValueError:
                 self.SERVER_LOGGER.error('Invalid message')
-                print('Некорректное сообщение')
                 client.close()
 
 
