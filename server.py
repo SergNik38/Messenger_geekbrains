@@ -5,6 +5,7 @@ import logging
 from common.const import ACTION, PRESENCE, TIME, USER, \
     ACCOUNT_NAME, RESPONSE, ERROR, DEFAULT_IP_ADDRESS, DEFAULT_PORT, MAX_CONNECTIONS
 from common.utils import get_message, send_message
+from decors import Log
 
 
 class Server:
@@ -14,7 +15,7 @@ class Server:
         self.server_address = server_address
         self.server_port = int(server_port)
 
-
+    @Log()
     def client_message_handler(self, message):
         self.SERVER_LOGGER.debug(f'Received message: {message}')
 
@@ -28,6 +29,7 @@ class Server:
             ERROR: 'BAD REQUEST'
         }
 
+    @Log()
     def main(self):
         if self.server_port < 1024 or self.server_port > 65535:
             self.SERVER_LOGGER.critical('Invalid server port')

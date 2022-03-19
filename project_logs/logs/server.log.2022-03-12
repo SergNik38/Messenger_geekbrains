@@ -1,0 +1,7 @@
+DEBUG | 2022-03-12 12:40:49,375 | server_logs_config.py | test debug message
+INFO | 2022-03-12 12:40:49,375 | server_logs_config.py | test info message
+ERROR | 2022-03-12 12:40:49,375 | server_logs_config.py | test error message
+CRITICAL | 2022-03-12 12:40:49,375 | server_logs_config.py | test critical message
+INFO | 2022-03-12 12:46:57,936 | server.py | Server object created address: 127.0.0.1, port: 8888
+DEBUG | 2022-03-12 12:47:00,839 | server.py | Server message: {'action': 'presence', 'time': 1647060420.83777, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-12 12:47:00,839 | server.py | Server response OK
