@@ -1,0 +1,27 @@
+INFO | 2022-03-27 10:12:42,956 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-27 10:16:22,405 | server.py | Server object created address: 127.0.0.1, port: 8888
+DEBUG | 2022-03-27 10:16:22,844 | server.py | Received message: {'action': 'presence', 'time': 1648347382.843072, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-27 10:16:22,844 | server.py | Server response OK
+DEBUG | 2022-03-27 10:16:22,845 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x103df3fd0>, {'action': 'presence', 'time': 1648347382.843072, 'user': {'account_name': 'Guest'}}), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-27 10:16:22,846 | server.py | Received message: {'action': 'presence', 'time': 1648347382.845453, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-27 10:16:22,846 | server.py | Server response OK
+DEBUG | 2022-03-27 10:16:22,846 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x103df3fd0>, {'action': 'presence', 'time': 1648347382.845453, 'user': {'account_name': 'Guest'}}), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-27 10:16:22,848 | server.py | Received message: {'action': 'presence', 'time': 1648347382.847463, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-27 10:16:22,848 | server.py | Server response OK
+DEBUG | 2022-03-27 10:16:22,849 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x103df3fd0>, {'action': 'presence', 'time': 1648347382.847463, 'user': {'account_name': 'Guest'}}), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-27 11:39:40,405 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-27 11:40:01,824 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-27 11:41:09,976 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-27 11:41:55,512 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-27 11:44:25,959 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-27 11:44:42,571 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-27 11:45:15,921 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-27 11:45:43,867 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-27 11:47:06,342 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-27 11:47:25,361 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-27 11:49:07,432 | server.py | Server object created address: 127.0.0.1, port: 8888
+DEBUG | 2022-03-27 11:49:13,054 | server.py | Received message: {'action': 'presence', 'time': 1648352952.9521978, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-27 11:49:13,055 | server.py | Server response OK
+DEBUG | 2022-03-27 11:49:13,056 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x103a1b850>, {'action': 'presence', 'time': 1648352952.9521978, 'user': {'account_name': 'Guest'}}), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-27 11:51:42,013 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-27 11:53:12,329 | server.py | Server object created address: 127.0.0.1, port: 8888

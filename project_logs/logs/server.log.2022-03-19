@@ -1,0 +1,16 @@
+INFO | 2022-03-19 11:41:44,605 | server.py | Server object created address: 127.0.0.1, port: 8888
+DEBUG | 2022-03-19 11:41:51,240 | server.py | Received message: {'action': 'presence', 'time': 1647661311.2381902, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-19 11:41:51,241 | server.py | Server response OK
+DEBUG | 2022-03-19 11:41:51,242 | decors.py | Called function client_message_handler with params (<__main__.Server object at 0x1076b3fd0>, {'action': 'presence', 'time': 1647661311.2381902, 'user': {'account_name': 'Guest'}}), {}.From module __main__.From function server.main().
+INFO | 2022-03-19 11:44:21,130 | server.py | Server object created address: 127.0.0.1, port: 8888
+DEBUG | 2022-03-19 11:44:24,780 | server.py | Received message: {'action': 'presence', 'time': 1647661464.778264, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-19 11:44:24,781 | server.py | Server response OK
+DEBUG | 2022-03-19 11:44:24,782 | decors.py | Called function client_message_handler with params ((<__main__.Server object at 0x106e03fd0>, {'action': 'presence', 'time': 1647661464.778264, 'user': {'account_name': 'Guest'}}), {}).From module __main__.From function server.main().
+INFO | 2022-03-19 11:45:08,198 | server.py | Server object created address: 127.0.0.1, port: 8888
+DEBUG | 2022-03-19 11:45:11,732 | server.py | Received message: {'action': 'presence', 'time': 1647661511.731143, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-19 11:45:11,733 | server.py | Server response OK
+DEBUG | 2022-03-19 11:45:11,734 | decors.py | Called function client_message_handler with params ((<__main__.Server object at 0x10bd3bfd0>, {'action': 'presence', 'time': 1647661511.731143, 'user': {'account_name': 'Guest'}}), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-19 11:51:12,621 | server.py | Server object created address: 127.0.0.1, port: 8888
+DEBUG | 2022-03-19 11:51:15,853 | server.py | Received message: {'action': 'presence', 'time': 1647661875.852138, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-19 11:51:15,853 | server.py | Server response OK
+DEBUG | 2022-03-19 11:51:15,854 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x102693fd0>, {'action': 'presence', 'time': 1647661875.852138, 'user': {'account_name': 'Guest'}}), {}). From module __main__. From function server.main(). 

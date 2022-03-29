@@ -18,9 +18,12 @@ ACTION = 'action'
 TIME = 'time'
 USER = 'user'
 ACCOUNT_NAME = 'account_name'
+DESTINATION = 'to'
+SENDER = 'from'
 
 # Other
 PRESENCE = 'presence'
 RESPONSE = 'response'
 ERROR = 'error'
-
+MESSAGE = 'msg'
+MESSAGE_TEXT = 'msg txt'
