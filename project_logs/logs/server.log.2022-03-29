@@ -1,0 +1,266 @@
+INFO | 2022-03-29 20:34:47,793 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 20:34:52,930 | server.py | Client ('127.0.0.1', 50088) connected
+DEBUG | 2022-03-29 20:34:53,136 | server.py | Received message: {'action': 'presence', 'time': 1648557292.930259, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 20:34:53,136 | server.py | Server response OK
+DEBUG | 2022-03-29 20:34:53,137 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10b857f40>, {'action': 'presence', 'time': 1648557292.930259, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50088)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 20:34:53,338 | server.py | Client ('127.0.0.1', 50088) disconnected
+INFO | 2022-03-29 21:09:21,289 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:09:31,023 | server.py | Client ('127.0.0.1', 50320) connected
+INFO | 2022-03-29 21:09:31,086 | server.py | Client ('127.0.0.1', 50321) connected
+DEBUG | 2022-03-29 21:09:31,086 | server.py | Received message: {'action': 'presence', 'time': 1648559371.023849, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:09:31,086 | server.py | Server response OK
+DEBUG | 2022-03-29 21:09:31,088 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10ee5bfd0>, {'action': 'presence', 'time': 1648559371.023849, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50320)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:09:31,289 | server.py | Received message: {'action': 'presence', 'time': 1648559371.086334, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:09:31,290 | server.py | Server response OK
+DEBUG | 2022-03-29 21:09:31,290 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10ee5bfd0>, {'action': 'presence', 'time': 1648559371.086334, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50321)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:09:31,514 | server.py | Client ('127.0.0.1', 50322) connected
+INFO | 2022-03-29 21:09:31,535 | server.py | Client ('127.0.0.1', 50323) connected
+DEBUG | 2022-03-29 21:09:31,535 | server.py | Received message: {'action': 'presence', 'time': 1648559371.514837, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:09:31,535 | server.py | Server response OK
+DEBUG | 2022-03-29 21:09:31,536 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10ee5bfd0>, {'action': 'presence', 'time': 1648559371.514837, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=8, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50322)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:09:31,739 | server.py | Received message: {'action': 'presence', 'time': 1648559371.535509, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:09:31,739 | server.py | Server response OK
+DEBUG | 2022-03-29 21:09:31,740 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10ee5bfd0>, {'action': 'presence', 'time': 1648559371.535509, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=9, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50323)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:09:38,043 | server.py | Received message: {'action': 'msg', 'time': 1648559378.009068, 'account_name': 'Guest', 'msg txt': '1'}
+DEBUG | 2022-03-29 21:09:38,044 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10ee5bfd0>, {'action': 'msg', 'time': 1648559378.009068, 'account_name': 'Guest', 'msg txt': '1'}, [('Guest', '1')], <socket.socket fd=8, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50322)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:12:41,218 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:12:51,571 | server.py | Client ('127.0.0.1', 50341) connected
+DEBUG | 2022-03-29 21:12:51,773 | server.py | Received message: {'action': 'presence', 'time': 1648559571.571635, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:12:51,774 | server.py | Server response OK
+DEBUG | 2022-03-29 21:12:51,776 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10cc8ffd0>, {'action': 'presence', 'time': 1648559571.571635, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50341)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:12:55,347 | server.py | Client ('127.0.0.1', 50344) connected
+DEBUG | 2022-03-29 21:12:55,552 | server.py | Received message: {'action': 'presence', 'time': 1648559575.347904, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:12:55,553 | server.py | Server response OK
+DEBUG | 2022-03-29 21:12:55,553 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10cc8ffd0>, {'action': 'presence', 'time': 1648559575.347904, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50344)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:12:59,027 | server.py | Client ('127.0.0.1', 50345) connected
+DEBUG | 2022-03-29 21:12:59,230 | server.py | Received message: {'action': 'presence', 'time': 1648559579.0275562, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:12:59,230 | server.py | Server response OK
+DEBUG | 2022-03-29 21:12:59,231 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10cc8ffd0>, {'action': 'presence', 'time': 1648559579.0275562, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=8, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50345)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:13:03,558 | server.py | Client ('127.0.0.1', 50346) connected
+DEBUG | 2022-03-29 21:13:03,761 | server.py | Received message: {'action': 'presence', 'time': 1648559583.5585659, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:13:03,761 | server.py | Server response OK
+DEBUG | 2022-03-29 21:13:03,761 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10cc8ffd0>, {'action': 'presence', 'time': 1648559583.5585659, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=9, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50346)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:13:07,206 | server.py | Received message: {'action': 'msg', 'time': 1648559587.170683, 'account_name': 'Guest', 'msg txt': 'privet'}
+DEBUG | 2022-03-29 21:13:07,207 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10cc8ffd0>, {'action': 'msg', 'time': 1648559587.170683, 'account_name': 'Guest', 'msg txt': 'privet'}, [('Guest', 'privet')], <socket.socket fd=9, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50346)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:13:07,412 | server.py | Client ('127.0.0.1', 50341) disconnected
+INFO | 2022-03-29 21:13:07,412 | server.py | Client ('127.0.0.1', 50344) disconnected
+INFO | 2022-03-29 21:14:24,035 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:14:50,350 | server.py | Client ('127.0.0.1', 50350) connected
+DEBUG | 2022-03-29 21:14:50,561 | server.py | Received message: {'action': 'presence', 'time': 1648559690.3501241, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:14:50,561 | server.py | Server response OK
+DEBUG | 2022-03-29 21:14:50,563 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x1053ebf40>, {'action': 'presence', 'time': 1648559690.3501241, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50350)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:14:53,291 | server.py | Client ('127.0.0.1', 50351) connected
+DEBUG | 2022-03-29 21:14:53,497 | server.py | Received message: {'action': 'presence', 'time': 1648559693.29172, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:14:53,497 | server.py | Server response OK
+DEBUG | 2022-03-29 21:14:53,498 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x1053ebf40>, {'action': 'presence', 'time': 1648559693.29172, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50351)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:14:55,340 | server.py | Client ('127.0.0.1', 50354) connected
+DEBUG | 2022-03-29 21:14:55,542 | server.py | Received message: {'action': 'presence', 'time': 1648559695.339944, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:14:55,542 | server.py | Server response OK
+DEBUG | 2022-03-29 21:14:55,543 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x1053ebf40>, {'action': 'presence', 'time': 1648559695.339944, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=8, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50354)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:14:57,374 | server.py | Received message: {'action': 'msg', 'time': 1648559697.187021, 'account_name': 'Guest', 'msg txt': 'pri'}
+DEBUG | 2022-03-29 21:14:57,374 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x1053ebf40>, {'action': 'msg', 'time': 1648559697.187021, 'account_name': 'Guest', 'msg txt': 'pri'}, [('Guest', 'pri')], <socket.socket fd=8, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50354)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:14:57,579 | server.py | Client ('127.0.0.1', 50350) disconnected
+INFO | 2022-03-29 21:14:57,580 | server.py | Client ('127.0.0.1', 50351) disconnected
+INFO | 2022-03-29 21:16:44,406 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:17:00,643 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:17:26,856 | server.py | Client ('127.0.0.1', 50368) connected
+DEBUG | 2022-03-29 21:17:46,893 | server.py | Received message: {'action': 'presence', 'time': 1648559846.856438, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:17:46,894 | server.py | Server response OK
+DEBUG | 2022-03-29 21:17:46,903 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10ffffc70>, {'action': 'presence', 'time': 1648559846.856438, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=8, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50368)>), {}). From module __main__. From function main(). 
+INFO | 2022-03-29 21:18:03,332 | server.py | Client ('127.0.0.1', 50372) connected
+DEBUG | 2022-03-29 21:18:26,187 | server.py | Received message: {'action': 'presence', 'time': 1648559883.3326359, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:18:26,188 | server.py | Server response OK
+DEBUG | 2022-03-29 21:18:26,190 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10ffffc70>, {'action': 'presence', 'time': 1648559883.3326359, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=9, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50372)>), {}). From module __main__. From function main(). 
+DEBUG | 2022-03-29 21:19:14,087 | server.py | Received message: {'action': 'msg', 'time': 1648559933.6771772, 'account_name': 'Guest', 'msg txt': 'hey'}
+DEBUG | 2022-03-29 21:19:14,089 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10ffffc70>, {'action': 'msg', 'time': 1648559933.6771772, 'account_name': 'Guest', 'msg txt': 'hey'}, [('Guest', 'hey')], <socket.socket fd=8, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50368)>), {}). From module __main__. From function main(). 
+INFO | 2022-03-29 21:20:01,747 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:20:15,711 | server.py | Client ('127.0.0.1', 50378) connected
+DEBUG | 2022-03-29 21:20:15,915 | server.py | Received message: {'action': 'presence', 'time': 1648560015.7111602, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:20:15,915 | server.py | Server response OK
+DEBUG | 2022-03-29 21:20:15,916 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10c79bf40>, {'action': 'presence', 'time': 1648560015.7111602, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50378)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:20:19,479 | server.py | Client ('127.0.0.1', 50379) connected
+DEBUG | 2022-03-29 21:20:19,684 | server.py | Received message: {'action': 'presence', 'time': 1648560019.478972, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:20:19,684 | server.py | Server response OK
+DEBUG | 2022-03-29 21:20:19,685 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10c79bf40>, {'action': 'presence', 'time': 1648560019.478972, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50379)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:20:22,375 | server.py | Client ('127.0.0.1', 50380) connected
+DEBUG | 2022-03-29 21:20:22,576 | server.py | Received message: {'action': 'presence', 'time': 1648560022.3748748, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:20:22,576 | server.py | Server response OK
+DEBUG | 2022-03-29 21:20:22,577 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10c79bf40>, {'action': 'presence', 'time': 1648560022.3748748, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=8, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50380)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:20:24,575 | server.py | Client ('127.0.0.1', 50381) connected
+DEBUG | 2022-03-29 21:20:24,776 | server.py | Received message: {'action': 'presence', 'time': 1648560024.574878, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:20:24,776 | server.py | Server response OK
+DEBUG | 2022-03-29 21:20:24,777 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10c79bf40>, {'action': 'presence', 'time': 1648560024.574878, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=9, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50381)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:20:27,013 | server.py | Received message: {'action': 'msg', 'time': 1648560026.9579258, 'account_name': 'Guest', 'msg txt': 's'}
+DEBUG | 2022-03-29 21:20:27,014 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10c79bf40>, {'action': 'msg', 'time': 1648560026.9579258, 'account_name': 'Guest', 'msg txt': 's'}, [('Guest', 's')], <socket.socket fd=9, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50381)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:20:27,216 | server.py | Client ('127.0.0.1', 50378) disconnected
+INFO | 2022-03-29 21:20:27,216 | server.py | Client ('127.0.0.1', 50379) disconnected
+INFO | 2022-03-29 21:20:27,217 | server.py | Client ('127.0.0.1', 50380) disconnected
+INFO | 2022-03-29 21:28:50,715 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:29:01,613 | server.py | Client ('127.0.0.1', 50427) connected
+DEBUG | 2022-03-29 21:29:01,819 | server.py | Received message: {'action': 'presence', 'time': 1648560541.613246, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:29:01,819 | server.py | Server response OK
+DEBUG | 2022-03-29 21:29:01,820 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x106677fd0>, {'action': 'presence', 'time': 1648560541.613246, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50427)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:29:04,487 | server.py | Client ('127.0.0.1', 50428) connected
+DEBUG | 2022-03-29 21:29:04,691 | server.py | Received message: {'action': 'presence', 'time': 1648560544.487009, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:29:04,692 | server.py | Server response OK
+DEBUG | 2022-03-29 21:29:04,692 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x106677fd0>, {'action': 'presence', 'time': 1648560544.487009, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50428)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:29:10,582 | server.py | Client ('127.0.0.1', 50429) connected
+DEBUG | 2022-03-29 21:29:10,785 | server.py | Received message: {'action': 'presence', 'time': 1648560550.58271, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:29:10,785 | server.py | Server response OK
+DEBUG | 2022-03-29 21:29:10,785 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x106677fd0>, {'action': 'presence', 'time': 1648560550.58271, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=8, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50429)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:29:16,411 | server.py | Client ('127.0.0.1', 50430) connected
+DEBUG | 2022-03-29 21:29:16,615 | server.py | Received message: {'action': 'presence', 'time': 1648560556.411683, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:29:16,615 | server.py | Server response OK
+DEBUG | 2022-03-29 21:29:16,616 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x106677fd0>, {'action': 'presence', 'time': 1648560556.411683, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=9, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50430)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:29:18,032 | server.py | Received message: {'action': 'msg', 'time': 1648560557.93084, 'account_name': 'Guest', 'msg txt': '123'}
+DEBUG | 2022-03-29 21:29:18,033 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x106677fd0>, {'action': 'msg', 'time': 1648560557.93084, 'account_name': 'Guest', 'msg txt': '123'}, [('Guest', '123')], <socket.socket fd=9, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50430)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:29:18,239 | server.py | Client ('127.0.0.1', 50427) disconnected
+INFO | 2022-03-29 21:29:18,239 | server.py | Client ('127.0.0.1', 50429) disconnected
+INFO | 2022-03-29 21:30:12,129 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:30:18,634 | server.py | Client ('127.0.0.1', 50432) connected
+DEBUG | 2022-03-29 21:30:18,836 | server.py | Received message: {'action': 'presence', 'time': 1648560618.634103, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:30:18,836 | server.py | Server response OK
+DEBUG | 2022-03-29 21:30:18,837 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x105b5ffd0>, {'action': 'presence', 'time': 1648560618.634103, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50432)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:30:21,343 | server.py | Client ('127.0.0.1', 50433) connected
+DEBUG | 2022-03-29 21:30:21,546 | server.py | Received message: {'action': 'presence', 'time': 1648560621.342955, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:30:21,546 | server.py | Server response OK
+DEBUG | 2022-03-29 21:30:21,547 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x105b5ffd0>, {'action': 'presence', 'time': 1648560621.342955, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50433)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:30:24,392 | server.py | Received message: {'action': 'msg', 'time': 1648560624.198078, 'account_name': 'Guest', 'msg txt': '21'}
+DEBUG | 2022-03-29 21:30:24,392 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x105b5ffd0>, {'action': 'msg', 'time': 1648560624.198078, 'account_name': 'Guest', 'msg txt': '21'}, [('Guest', '21')], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50432)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:33:02,111 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:33:10,507 | server.py | Client ('127.0.0.1', 50437) connected
+DEBUG | 2022-03-29 21:33:10,712 | server.py | Received message: {'action': 'presence', 'time': 1648560790.507446, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:33:10,712 | server.py | Server response OK
+DEBUG | 2022-03-29 21:33:10,713 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10cd47fd0>, {'action': 'presence', 'time': 1648560790.507446, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50437)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:33:16,795 | server.py | Client ('127.0.0.1', 50438) connected
+DEBUG | 2022-03-29 21:33:17,001 | server.py | Received message: {'action': 'presence', 'time': 1648560796.795728, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:33:17,001 | server.py | Server response OK
+DEBUG | 2022-03-29 21:33:17,001 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10cd47fd0>, {'action': 'presence', 'time': 1648560796.795728, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50438)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:33:21,073 | server.py | Received message: {'action': 'msg', 'time': 1648560800.931007, 'account_name': 'Guest', 'msg txt': 'sasas'}
+DEBUG | 2022-03-29 21:33:21,073 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10cd47fd0>, {'action': 'msg', 'time': 1648560800.931007, 'account_name': 'Guest', 'msg txt': 'sasas'}, [('Guest', 'sasas')], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50437)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:36:08,421 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:36:32,042 | server.py | Client ('127.0.0.1', 50452) connected
+DEBUG | 2022-03-29 21:38:14,766 | server.py | Received message: {'action': 'presence', 'time': 1648560992.042561, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:38:14,767 | server.py | Server response OK
+DEBUG | 2022-03-29 21:38:14,771 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x1111c3c70>, {'action': 'presence', 'time': 1648560992.042561, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=8, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50452)>), {}). From module __main__. From function main(). 
+INFO | 2022-03-29 21:38:14,772 | server.py | Client ('127.0.0.1', 50456) connected
+DEBUG | 2022-03-29 21:38:18,201 | server.py | Received message: {'action': 'presence', 'time': 1648561084.7658439, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:38:18,202 | server.py | Server response OK
+DEBUG | 2022-03-29 21:38:18,204 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x1111c3c70>, {'action': 'presence', 'time': 1648561084.7658439, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=9, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50456)>), {}). From module __main__. From function main(). 
+DEBUG | 2022-03-29 21:38:49,872 | server.py | Received message: {'action': 'msg', 'time': 1648561103.622427, 'account_name': 'Guest', 'msg txt': 'raz'}
+DEBUG | 2022-03-29 21:38:49,875 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x1111c3c70>, {'action': 'msg', 'time': 1648561103.622427, 'account_name': 'Guest', 'msg txt': 'raz'}, [('Guest', 'raz')], <socket.socket fd=8, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50452)>), {}). From module __main__. From function main(). 
+INFO | 2022-03-29 21:43:21,684 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:43:40,478 | server.py | Client ('127.0.0.1', 50475) connected
+DEBUG | 2022-03-29 21:43:40,680 | server.py | Received message: {'action': 'presence', 'time': 1648561420.478066, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:43:40,680 | server.py | Server response OK
+DEBUG | 2022-03-29 21:43:40,681 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10b0c7f40>, {'action': 'presence', 'time': 1648561420.478066, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50475)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:43:42,565 | server.py | Client ('127.0.0.1', 50476) connected
+DEBUG | 2022-03-29 21:43:42,770 | server.py | Received message: {'action': 'presence', 'time': 1648561422.565826, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:43:42,770 | server.py | Server response OK
+DEBUG | 2022-03-29 21:43:42,770 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10b0c7f40>, {'action': 'presence', 'time': 1648561422.565826, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50476)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:43:43,784 | server.py | Received message: {'action': 'msg', 'time': 1648561423.605089, 'account_name': 'Guest', 'msg txt': '123'}
+DEBUG | 2022-03-29 21:43:43,785 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10b0c7f40>, {'action': 'msg', 'time': 1648561423.605089, 'account_name': 'Guest', 'msg txt': '123'}, [('Guest', '123')], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50476)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:43:43,988 | server.py | Client ('127.0.0.1', 50476) disconnected
+INFO | 2022-03-29 21:43:44,393 | server.py | Client ('127.0.0.1', 50475) disconnected
+INFO | 2022-03-29 21:44:45,524 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:45:14,626 | server.py | Client ('127.0.0.1', 50480) connected
+DEBUG | 2022-03-29 21:45:14,831 | server.py | Received message: {'action': 'presence', 'time': 1648561514.626142, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:45:14,831 | server.py | Server response OK
+DEBUG | 2022-03-29 21:45:14,832 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x1035c3f40>, {'action': 'presence', 'time': 1648561514.626142, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50480)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:45:17,226 | server.py | Client ('127.0.0.1', 50481) connected
+DEBUG | 2022-03-29 21:45:17,432 | server.py | Received message: {'action': 'presence', 'time': 1648561517.226283, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:45:17,432 | server.py | Server response OK
+DEBUG | 2022-03-29 21:45:17,433 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x1035c3f40>, {'action': 'presence', 'time': 1648561517.226283, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50481)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:45:19,667 | server.py | Received message: {'action': 'msg', 'time': 1648561519.6414819, 'account_name': 'Guest', 'msg txt': 'sa'}
+DEBUG | 2022-03-29 21:45:19,667 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x1035c3f40>, {'action': 'msg', 'time': 1648561519.6414819, 'account_name': 'Guest', 'msg txt': 'sa'}, [('Guest', 'sa')], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50480)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:45:19,870 | server.py | Client ('127.0.0.1', 50480) disconnected
+INFO | 2022-03-29 21:45:20,279 | server.py | Client ('127.0.0.1', 50481) disconnected
+INFO | 2022-03-29 21:45:53,382 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:46:06,111 | server.py | Client ('127.0.0.1', 50482) connected
+DEBUG | 2022-03-29 21:46:06,316 | server.py | Received message: {'action': 'presence', 'time': 1648561566.111066, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:46:06,317 | server.py | Server response OK
+DEBUG | 2022-03-29 21:46:06,318 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10691ff40>, {'action': 'presence', 'time': 1648561566.111066, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50482)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:46:09,431 | server.py | Client ('127.0.0.1', 50483) connected
+DEBUG | 2022-03-29 21:46:09,635 | server.py | Received message: {'action': 'presence', 'time': 1648561569.43119, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:46:09,636 | server.py | Server response OK
+DEBUG | 2022-03-29 21:46:09,636 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10691ff40>, {'action': 'presence', 'time': 1648561569.43119, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50483)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:46:11,260 | server.py | Received message: {'action': 'msg', 'time': 1648561571.15804, 'account_name': 'Guest', 'msg txt': '123'}
+DEBUG | 2022-03-29 21:46:11,260 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10691ff40>, {'action': 'msg', 'time': 1648561571.15804, 'account_name': 'Guest', 'msg txt': '123'}, [('Guest', '123')], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50483)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:46:11,462 | server.py | Client ('127.0.0.1', 50483) disconnected
+INFO | 2022-03-29 21:46:11,871 | server.py | Client ('127.0.0.1', 50482) disconnected
+INFO | 2022-03-29 21:47:02,231 | server.py | Client ('127.0.0.1', 50485) connected
+DEBUG | 2022-03-29 21:47:02,432 | server.py | Received message: {'action': 'presence', 'time': 1648561622.2311502, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:47:02,433 | server.py | Server response OK
+DEBUG | 2022-03-29 21:47:02,433 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10691ff40>, {'action': 'presence', 'time': 1648561622.2311502, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=8, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50485)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:47:09,296 | server.py | Client ('127.0.0.1', 50486) connected
+DEBUG | 2022-03-29 21:47:09,500 | server.py | Received message: {'action': 'presence', 'time': 1648561629.295978, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:47:09,501 | server.py | Server response OK
+DEBUG | 2022-03-29 21:47:09,501 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10691ff40>, {'action': 'presence', 'time': 1648561629.295978, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50486)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:47:11,321 | server.py | Received message: {'action': 'msg', 'time': 1648561631.190597, 'account_name': 'Guest', 'msg txt': '123'}
+DEBUG | 2022-03-29 21:47:11,321 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10691ff40>, {'action': 'msg', 'time': 1648561631.190597, 'account_name': 'Guest', 'msg txt': '123'}, [('Guest', '123')], <socket.socket fd=8, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50485)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:47:11,522 | server.py | Client ('127.0.0.1', 50485) disconnected
+INFO | 2022-03-29 21:47:11,933 | server.py | Client ('127.0.0.1', 50486) disconnected
+INFO | 2022-03-29 21:47:55,237 | server.py | Client ('127.0.0.1', 50488) connected
+DEBUG | 2022-03-29 21:47:55,439 | server.py | Received message: {'action': 'presence', 'time': 1648561675.23725, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:47:55,440 | server.py | Server response OK
+DEBUG | 2022-03-29 21:47:55,440 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10691ff40>, {'action': 'presence', 'time': 1648561675.23725, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50488)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:47:57,206 | server.py | Client ('127.0.0.1', 50489) connected
+DEBUG | 2022-03-29 21:47:57,407 | server.py | Received message: {'action': 'presence', 'time': 1648561677.206469, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:47:57,407 | server.py | Server response OK
+DEBUG | 2022-03-29 21:47:57,408 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10691ff40>, {'action': 'presence', 'time': 1648561677.206469, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=8, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50489)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:47:59,034 | server.py | Received message: {'action': 'msg', 'time': 1648561678.8537118, 'account_name': 'Guest', 'msg txt': 'msg'}
+DEBUG | 2022-03-29 21:47:59,035 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10691ff40>, {'action': 'msg', 'time': 1648561678.8537118, 'account_name': 'Guest', 'msg txt': 'msg'}, [('Guest', 'msg')], <socket.socket fd=8, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50489)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:47:59,236 | server.py | Client ('127.0.0.1', 50489) disconnected
+INFO | 2022-03-29 21:47:59,645 | server.py | Client ('127.0.0.1', 50488) disconnected
+INFO | 2022-03-29 21:50:12,774 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:50:26,474 | server.py | Client ('127.0.0.1', 50492) connected
+DEBUG | 2022-03-29 21:50:26,677 | server.py | Received message: {'action': 'presence', 'time': 1648561826.474242, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:50:26,677 | server.py | Server response OK
+DEBUG | 2022-03-29 21:50:26,678 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10280bf40>, {'action': 'presence', 'time': 1648561826.474242, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50492)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:50:29,274 | server.py | Client ('127.0.0.1', 50493) connected
+DEBUG | 2022-03-29 21:50:29,480 | server.py | Received message: {'action': 'presence', 'time': 1648561829.274115, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:50:29,480 | server.py | Server response OK
+DEBUG | 2022-03-29 21:50:29,481 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10280bf40>, {'action': 'presence', 'time': 1648561829.274115, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50493)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:50:31,708 | server.py | Received message: {'action': 'msg', 'time': 1648561831.5211751, 'account_name': 'Guest', 'msg txt': '4141'}
+DEBUG | 2022-03-29 21:50:31,708 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x10280bf40>, {'action': 'msg', 'time': 1648561831.5211751, 'account_name': 'Guest', 'msg txt': '4141'}, [('Guest', '4141')], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50492)>), {}). From module __main__. From function server.main(). 
+ERROR | 2022-03-29 21:50:31,914 | server.py | Client ('127.0.0.1', 50492) disconnected
+ERROR | 2022-03-29 21:50:32,320 | server.py | Client ('127.0.0.1', 50493) disconnected
+INFO | 2022-03-29 21:52:12,425 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:52:23,377 | server.py | Client ('127.0.0.1', 50496) connected
+DEBUG | 2022-03-29 21:52:23,582 | server.py | Received message: {'action': 'presence', 'time': 1648561943.37711, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:52:23,582 | server.py | Server response OK
+DEBUG | 2022-03-29 21:52:23,583 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x100a23f40>, {'action': 'presence', 'time': 1648561943.37711, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50496)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:52:26,175 | server.py | Client ('127.0.0.1', 50497) connected
+DEBUG | 2022-03-29 21:52:26,379 | server.py | Received message: {'action': 'presence', 'time': 1648561946.175683, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:52:26,380 | server.py | Server response OK
+DEBUG | 2022-03-29 21:52:26,380 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x100a23f40>, {'action': 'presence', 'time': 1648561946.175683, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50497)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:52:28,403 | server.py | Received message: {'action': 'msg', 'time': 1648561948.3823922, 'account_name': 'Guest', 'msg txt': '123123'}
+DEBUG | 2022-03-29 21:52:28,403 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x100a23f40>, {'action': 'msg', 'time': 1648561948.3823922, 'account_name': 'Guest', 'msg txt': '123123'}, [('Guest', '123123')], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50496)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:55:19,766 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:55:29,964 | server.py | Client ('127.0.0.1', 50502) connected
+DEBUG | 2022-03-29 21:55:30,170 | server.py | Received message: {'action': 'presence', 'time': 1648562129.96427, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:55:30,170 | server.py | Server response OK
+DEBUG | 2022-03-29 21:55:30,171 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x101bc3f40>, {'action': 'presence', 'time': 1648562129.96427, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50502)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:55:33,628 | server.py | Client ('127.0.0.1', 50503) connected
+DEBUG | 2022-03-29 21:55:33,831 | server.py | Received message: {'action': 'presence', 'time': 1648562133.628771, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:55:33,832 | server.py | Server response OK
+DEBUG | 2022-03-29 21:55:33,832 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x101bc3f40>, {'action': 'presence', 'time': 1648562133.628771, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50503)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:55:36,062 | server.py | Received message: {'action': 'msg', 'time': 1648562135.9, 'account_name': 'Guest', 'msg txt': '123'}
+DEBUG | 2022-03-29 21:55:36,062 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x101bc3f40>, {'action': 'msg', 'time': 1648562135.9, 'account_name': 'Guest', 'msg txt': '123'}, [('Guest', '123')], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50502)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:55:37,286 | server.py | Received message: {'action': 'msg', 'time': 1648562137.2277372, 'account_name': 'Guest', 'msg txt': '4124'}
+DEBUG | 2022-03-29 21:55:37,286 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x101bc3f40>, {'action': 'msg', 'time': 1648562137.2277372, 'account_name': 'Guest', 'msg txt': '4124'}, [('Guest', '4124')], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50502)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:55:38,711 | server.py | Received message: {'action': 'msg', 'time': 1648562138.635563, 'account_name': 'Guest', 'msg txt': '152351235'}
+DEBUG | 2022-03-29 21:55:38,712 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x101bc3f40>, {'action': 'msg', 'time': 1648562138.635563, 'account_name': 'Guest', 'msg txt': '152351235'}, [('Guest', '152351235')], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50502)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:56:23,888 | server.py | Server object created address: 127.0.0.1, port: 8888
+INFO | 2022-03-29 21:56:31,281 | server.py | Client ('127.0.0.1', 50504) connected
+DEBUG | 2022-03-29 21:56:31,483 | server.py | Received message: {'action': 'presence', 'time': 1648562191.281203, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:56:31,484 | server.py | Server response OK
+DEBUG | 2022-03-29 21:56:31,485 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x1027e7f40>, {'action': 'presence', 'time': 1648562191.281203, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50504)>), {}). From module __main__. From function server.main(). 
+INFO | 2022-03-29 21:56:34,249 | server.py | Client ('127.0.0.1', 50505) connected
+DEBUG | 2022-03-29 21:56:34,453 | server.py | Received message: {'action': 'presence', 'time': 1648562194.2488818, 'user': {'account_name': 'Guest'}}
+INFO | 2022-03-29 21:56:34,453 | server.py | Server response OK
+DEBUG | 2022-03-29 21:56:34,454 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x1027e7f40>, {'action': 'presence', 'time': 1648562194.2488818, 'user': {'account_name': 'Guest'}}, [], <socket.socket fd=7, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50505)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:56:40,760 | server.py | Received message: {'action': 'msg', 'time': 1648562200.615946, 'account_name': 'Guest', 'msg txt': 'hey'}
+DEBUG | 2022-03-29 21:56:40,761 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x1027e7f40>, {'action': 'msg', 'time': 1648562200.615946, 'account_name': 'Guest', 'msg txt': 'hey'}, [('Guest', 'hey')], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50504)>), {}). From module __main__. From function server.main(). 
+DEBUG | 2022-03-29 21:56:42,579 | server.py | Received message: {'action': 'msg', 'time': 1648562202.479629, 'account_name': 'Guest', 'msg txt': 'hello'}
+DEBUG | 2022-03-29 21:56:42,579 | server.py | Called function client_message_handler with params ((<__main__.Server object at 0x1027e7f40>, {'action': 'msg', 'time': 1648562202.479629, 'account_name': 'Guest', 'msg txt': 'hello'}, [('Guest', 'hello')], <socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8888), raddr=('127.0.0.1', 50504)>), {}). From module __main__. From function server.main(). 

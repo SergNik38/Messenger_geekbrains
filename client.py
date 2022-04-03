@@ -7,17 +7,17 @@ import logging
 import project_logs.config.client_logs_config
 from decors import Log
 import sys
+import threading
 
 
 class Client:
     CLIENT_LOGGER = logging.getLogger('client_logger')
 
-    def __init__(self, account_name='Guest', server_address=DEFAULT_IP_ADDRESS,
-                 server_port=DEFAULT_PORT, client_mode='send'):
+    def __init__(self, account_name, server_address=DEFAULT_IP_ADDRESS,
+                 server_port=DEFAULT_PORT):
         self.server_address = server_address
         self.server_port = int(server_port)
         self.account_name = account_name
-        self.client_mode = client_mode
 
     @Log()
     def create_presence(self):
@@ -28,33 +28,70 @@ class Client:
                 ACCOUNT_NAME: self.account_name
             }
         }
-        self.CLIENT_LOGGER.debug('Presence created')
+        self.CLIENT_LOGGER.debug(f'Presence created {self.account_name}')
         return out_mes
 
     @Log()
-    def receive_message(self, message):
-        if ACTION in message and message[ACTION] == MESSAGE and SENDER in message \
-                and MESSAGE_TEXT in message:
-            print(f'Message from {message[SENDER]}: {message[MESSAGE_TEXT]}')
-            self.CLIENT_LOGGER.info(f'Message from {message[SENDER]}: {message[MESSAGE_TEXT]}')
-        else:
-            self.CLIENT_LOGGER.error(f'Invalid message from server: {message}')
+    def receive_message(self, sock, account):
+        while True:
+            try:
+                message = get_message(sock)
+                if ACTION in message and message[ACTION] == MESSAGE and SENDER in message \
+                        and MESSAGE_TEXT in message and DESTINATION in message and message[DESTINATION] == account:
+                    print(f'Message from {message[SENDER]}: {message[MESSAGE_TEXT]}')
+                    self.CLIENT_LOGGER.info(f'Message from {message[SENDER]}: {message[MESSAGE_TEXT]}')
+                    continue
+                else:
+                    self.CLIENT_LOGGER.error(f'Invalid message from server: {message}')
+            except:
+                print(f'Connection lost')
+                break
+
+    def help_screen(self):
+        print('Commands:')
+        print('Input exit to close connection;')
+        print('Input message to send message;')
 
     def create_message(self, sock):
-
-        message = input(f'Input message or !exit to exit: ')
-        if message == '!exit':
-            sock.close()
-            self.CLIENT_LOGGER.info(f'Client close connection')
-            sys.exit(0)
+        dest = input(f'Input message destination: ')
+        message = input(f'Input message: ')
         message_dict = {
             ACTION: MESSAGE,
+            SENDER: self.account_name,
+            DESTINATION: dest,
             TIME: time.time(),
-            ACCOUNT_NAME: self.account_name,
             MESSAGE_TEXT: message
         }
         self.CLIENT_LOGGER.info(f'Message dict created: {message_dict}')
-        return message_dict
+        try:
+            send_message(sock, message_dict)
+            self.CLIENT_LOGGER.info(f'Sending message to {dest}')
+        except:
+            self.CLIENT_LOGGER.critical('Connection error (create_message)')
+            sys.exit(1)
+
+    @Log()
+    def interface(self, sock):
+        self.help_screen()
+
+        while True:
+            command = input('Command: ')
+            if command == 'message':
+                self.create_message(sock)
+            elif command == 'help':
+                self.help_screen()
+            elif command == 'exit':
+                exit_dict = {
+                    ACTION: EXIT,
+                    TIME: time.time(),
+                    ACCOUNT_NAME: self.account_name}
+                send_message(sock, exit_dict)
+                print('Closing connection')
+                self.CLIENT_LOGGER.info(f'Closing connection {self.account_name}')
+                time.sleep(0.5)
+                break
+            else:
+                print('Unknown command')
 
     @Log()
     def answer_handler(self, message):
@@ -81,30 +118,25 @@ class Client:
             self.CLIENT_LOGGER.info(f'Connected. Server answer: {answer}')
             print('Connected')
         except:
-            self.CLIENT_LOGGER.error(f'Connection error')
+            self.CLIENT_LOGGER.error(f'Connection error (main)')
             sys.exit(1)
         else:
-            if self.client_mode == 'send':
-                print('Sending messages')
-            else:
-                print('Receiving messages')
+            user_interface = threading.Thread(target=self.interface, args=(transport,))
+            user_interface.daemon = True
+            user_interface.start()
+
+            receiving = threading.Thread(target=self.receive_message, args=(transport, self.account_name))
+            receiving.daemon = True
+            receiving.start()
+            self.CLIENT_LOGGER.debug('Process started')
 
             while True:
-                if self.client_mode == 'send':
-                    try:
-                        send_message(transport, self.create_message(transport))
-                    except:
-                        self.CLIENT_LOGGER.error('Connection refused')
-                        sys.exit(1)
-                if self.client_mode == 'listen':
-                    try:
-                        self.receive_message(get_message(transport))
-                    except:
-                        self.CLIENT_LOGGER.error('Connection refused')
-                        sys.exit(1)
-
+                time.sleep(1)
+                if receiving.is_alive() and user_interface.is_alive():
+                    continue
+                break
 
 
 if __name__ == '__main__':
-    client = Client(client_mode=input('Client mode (send, listen): '))
+    client = Client(account_name=input('Input name: '))
     client.main()

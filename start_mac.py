@@ -34,7 +34,7 @@ while True:
         # SERVER.kill()
     elif CHOICE == '3':
         print("Запустили клиенты")
-        for i in range(2):
+        for i in range(1):
             CLIENTS.append(
                 Popen(
                     f'osascript -e \'tell application "Terminal" to do'
@@ -50,13 +50,11 @@ while True:
             # клиентов остался только слушающий клиент
             time.sleep(0.5)
     elif CHOICE == '4':
-        pass
-        # for i in range(len(CLIENTS)):
-        #     print(CLIENTS[i])
-        #     CLIENTS[i].kill()
+        for i in range(len(CLIENTS)):
+            print(CLIENTS[i])
+            CLIENTS[i].kill()
     elif CHOICE == '5':
+        for i in range(len(CLIENTS)):
+            CLIENTS[i].kill()
+        SERVER.kill()
         break
-        # for i in range(len(CLIENTS)):
-        #     CLIENTS[i].kill()
-        # SERVER.kill()
-        # break
