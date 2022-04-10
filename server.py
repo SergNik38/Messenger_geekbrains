@@ -6,10 +6,13 @@ from common.const import *
 from common.utils import get_message, send_message
 from decors import Log
 import select
+from descriptors import Port
+from metaclasses import ServerMaker
 
 
-class Server:
+class Server(metaclass=ServerMaker):
     SERVER_LOGGER = logging.getLogger('server_logger')
+    server_port = Port()
 
     def __init__(self, server_address=DEFAULT_IP_ADDRESS, server_port=DEFAULT_PORT):
         self.server_address = server_address
@@ -53,22 +56,21 @@ class Server:
                 ERROR: 'BAD REQUEST'
             })
             return
+
     @Log()
     def message_handler(self, message, names, listen_socks):
         if message[DESTINATION] in names and names[message[DESTINATION]] in listen_socks:
             print(f'MESSAGE HANDLER \n {names[message[DESTINATION]]}')
             send_message(names[message[DESTINATION]], message)
             self.SERVER_LOGGER.info(f'Message to {message[DESTINATION]} '
-                        f'from {message[SENDER]} sent.')
+                                    f'from {message[SENDER]} sent.')
         elif message[DESTINATION] in names and names[message[DESTINATION]] not in listen_socks:
             raise ConnectionError
         else:
             self.SERVER_LOGGER.error(f'User {message[DESTINATION]} not registered')
+
     @Log()
     def main(self):
-        if self.server_port < 1024 or self.server_port > 65535:
-            self.SERVER_LOGGER.critical('Invalid server port')
-            raise ValueError
         self.SERVER_LOGGER.info(f'Server object created address: {self.server_address}, port: {self.server_port}')
         transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         transport.bind((self.server_address, self.server_port))
