@@ -8,9 +8,10 @@ import project_logs.config.client_logs_config
 from decors import Log
 import sys
 import threading
+from metaclasses import ClientMaker
 
 
-class Client:
+class Client(metaclass=ClientMaker):
     CLIENT_LOGGER = logging.getLogger('client_logger')
 
     def __init__(self, account_name, server_address=DEFAULT_IP_ADDRESS,
