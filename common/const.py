@@ -28,3 +28,6 @@ ERROR = 'error'
 MESSAGE = 'msg'
 MESSAGE_TEXT = 'msg txt'
 EXIT = 'exit'
+
+#DB
+SERVER_DATABASE = 'sqlite:///server_base.db3'

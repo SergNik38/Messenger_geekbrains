@@ -8,15 +8,20 @@ from decors import Log
 import select
 from descriptors import Port
 from metaclasses import ServerMaker
+from server_db import ServerStorage
+import threading
 
 
-class Server(metaclass=ServerMaker):
+class Server(threading.Thread, metaclass=ServerMaker):
     SERVER_LOGGER = logging.getLogger('server_logger')
     server_port = Port()
 
-    def __init__(self, server_address=DEFAULT_IP_ADDRESS, server_port=DEFAULT_PORT):
+    def __init__(self, database, server_address=DEFAULT_IP_ADDRESS, server_port=DEFAULT_PORT):
         self.server_address = server_address
         self.server_port = int(server_port)
+        self.database = database
+        super().__init__()
+        print('INIT DONE')
 
     @Log()
     def client_message_handler(self, message, messages_lst, client, clients, names):
@@ -27,6 +32,10 @@ class Server(metaclass=ServerMaker):
             if message[USER][ACCOUNT_NAME] not in names.keys():
                 print(f'client message handler {message}')
                 names[message[USER][ACCOUNT_NAME]] = client
+                client_ip, client_port = client.getpeername()
+                print(client_ip)
+                print(client_port)
+                self.database.user_login(message[USER][ACCOUNT_NAME], client_ip, client_port)
                 self.SERVER_LOGGER.info('Server response OK')
                 send_message(client, {RESPONSE: 200})
             else:
@@ -45,6 +54,7 @@ class Server(metaclass=ServerMaker):
             messages_lst.append(message)
             return
         elif ACTION in message and message[ACTION] == EXIT and ACCOUNT_NAME in message:
+            self.database.user_logout(message[ACCOUNT_NAME])
             clients.remove(names[message[ACCOUNT_NAME]])
             names[message[ACCOUNT_NAME]].close()
             del names[message[ACCOUNT_NAME]]
@@ -69,19 +79,17 @@ class Server(metaclass=ServerMaker):
         else:
             self.SERVER_LOGGER.error(f'User {message[DESTINATION]} not registered')
 
+
     @Log()
-    def main(self):
+    def run(self):
         self.SERVER_LOGGER.info(f'Server object created address: {self.server_address}, port: {self.server_port}')
         transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         transport.bind((self.server_address, self.server_port))
         transport.settimeout(0.5)
         transport.listen(MAX_CONNECTIONS)
-
         clients = []
         messages = []
-
         names = {}
-
         while True:
             try:
                 client, client_addr = transport.accept()
@@ -116,22 +124,44 @@ class Server(metaclass=ServerMaker):
                     self.SERVER_LOGGER.info(f'Connection with {msg[DESTINATION]} lost.')
                     clients.remove(names[msg[DESTINATION]])
             messages.clear()
-            # if messages and send_data_lst:
-            #     message = {
-            #         ACTION: MESSAGE,
-            #         SENDER: messages[0][0],
-            #         TIME: time.time(),
-            #         MESSAGE_TEXT: messages[0][1]
-            #     }
-            #     del messages[0]
-            #     for waiting_client in send_data_lst:
-            #         try:
-            #             send_message(waiting_client, message)
-            #         except:
-            #             self.SERVER_LOGGER.error(f'Client {waiting_client.getpeername()} disconnected')
-            #             clients.remove(waiting_client)
+
+
+
+
+def print_help():
+    print('Commands:')
+    print('users - all users list')
+    print('connected - all connected users list')
+    print('loghist - user login history')
+    print('help - all commands')
+    print('exit - shutdown_server')
+
+
+def main():
+    database = ServerStorage()
+    server = Server(database)
+    server.daemon = True
+    server.start()
+    print_help()
+    while True:
+        command = input('Input command: ')
+        if command == 'users':
+            for user in sorted(database.list_users()):
+                print(f'User: {user[0]}, last login: {user[1]}')
+        elif command == 'help':
+            print_help()
+        elif command == 'connected':
+            for user in sorted(database.list_active_users()):
+                print(f'User: {user[0]}, connected {user[1]}:{user[2]}, connection time: {user[3]}')
+        elif command == 'loghist':
+            name = input('Input username to show history, or press Enter to show all users history')
+            for user in sorted(database.login_history(name)):
+                print(f'User {user[0]}, login time: {user[1]}, connected from {user[2]}:{user[3]}')
+        elif command == 'exit':
+            break
+        else:
+            print('unknown command')
 
 
 if __name__ == '__main__':
-    server = Server()
-    server.main()
+    main()
