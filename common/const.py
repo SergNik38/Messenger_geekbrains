@@ -28,6 +28,20 @@ ERROR = 'error'
 MESSAGE = 'msg'
 MESSAGE_TEXT = 'msg txt'
 EXIT = 'exit'
+GET_CONTACTS = 'get contacts'
+ADD_CONTACT = 'add contact'
+REMOVE_CONTACT = 'remove contact'
+USERS_REQUEST = 'get users'
+LIST_INFO = 'data list'
 
-#DB
+# DB
 SERVER_DATABASE = 'sqlite:///server_base.db3'
+
+# RESPONSE
+RESPONSE_202 = {
+    RESPONSE: 202,
+    LIST_INFO: None
+}
+RESPONSE_200 = {
+    RESPONSE: 200
+}
