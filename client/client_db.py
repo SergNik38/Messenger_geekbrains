@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, Table, Column, Integer, String, Text, Meta
 from sqlalchemy.orm import mapper, sessionmaker
 from common.const import *
 import datetime
-
+import os
 
 class ClientDatabase:
     class KnownUsers:
@@ -11,10 +11,10 @@ class ClientDatabase:
             self.user = user
 
     class MessageHistory:
-        def __init__(self, from_user, to_user, message):
+        def __init__(self, contact, direction, message):
             self.id = None
-            self.from_user = from_user
-            self.to_user = to_user
+            self.contact = contact
+            self.direction = direction
             self.message = message
             self.date = datetime.datetime.now()
 
@@ -24,8 +24,10 @@ class ClientDatabase:
             self.contact = contact
 
     def __init__(self, client_name):
-        self.db_engine = create_engine(f'sqlite:///client_{client_name}.db3', echo=False,
-                                       pool_recycle=7200)
+        path = os.path.dirname(os.path.realpath(__file__))
+        filename = f'client_{client_name}.db3'
+        self.db_engine = create_engine(f'sqlite:///{os.path.join(path, filename)}', echo=False,
+                                       pool_recycle=7200, connect_args={'check_same_thread': False})
 
         self.metadata = MetaData()
 
@@ -35,8 +37,8 @@ class ClientDatabase:
 
         message_history = Table('MessageHistory', self.metadata,
                                 Column('id', Integer, primary_key=True),
-                                Column('from_user', String),
-                                Column('to_user', String),
+                                Column('contact', String),
+                                Column('direction', String),
                                 Column('message', Text),
                                 Column('date', DateTime))
 
@@ -73,8 +75,8 @@ class ClientDatabase:
             self.session.add(user_row)
         self.session.commit()
 
-    def save_message(self, from_user, to_user, message):
-        message_row = self.MessageHistory(from_user, to_user, message)
+    def save_message(self, contact, direction, message):
+        message_row = self.MessageHistory(contact, direction, message)
         self.session.add(message_row)
         self.session.commit()
 
@@ -96,14 +98,9 @@ class ClientDatabase:
         else:
             return False
 
-    def get_history(self, from_user=None, to_user=None):
-        query = self.session.query(self.MessageHistory)
-        if from_user:
-            query = query.filter_by(from_user=from_user)
-        if to_user:
-            query = query.filter_by(to_user=to_user)
-
-        return [(history_row.from_user, history_row.to_user, history_row.message, history_row.date)
+    def get_history(self, contact):
+        query = self.session.query(self.MessageHistory).filter_by(contact=contact)
+        return [(history_row.contact, history_row.direction, history_row.message, history_row.date)
                 for history_row in query.all()]
 
 

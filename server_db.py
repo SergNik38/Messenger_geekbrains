@@ -124,8 +124,8 @@ class ServerStorage:
         sender_row.sent += 1
 
         recipient_row = self.session.query(self.UsersHistory).filter_by(user=recipient).first()
-        recipient_row.accpted += 1
-
+        recipient_row.accepted += 1
+        print('DOSHLO SYUDA')
         self.session.commit()
 
     def add_contact(self, user, contact):
@@ -191,6 +191,8 @@ class ServerStorage:
             self.LoginHistory.ip,
             self.LoginHistory.port,
         ).join(self.AllUsers)
+        if username:
+            query = query.filter(self.AllUsers.name == username)
         return query.all()
 
 
