@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine, Table, Column, Integer, \
-    String, MetaData, ForeignKey, DateTime
+    String, MetaData, ForeignKey, DateTime, Text
 from sqlalchemy.orm import mapper, sessionmaker
 from common.const import *
 import datetime
@@ -7,9 +7,10 @@ import datetime
 
 class ServerStorage:
     class AllUsers:
-        def __init__(self, username):
+        def __init__(self, username, psw_hash):
             self.name = username
             self.last_login = datetime.datetime.now()
+            self.psw_hash = psw_hash
             self.id = None
 
     class ActiveUsers:
@@ -49,14 +50,18 @@ class ServerStorage:
         users = Table('Users', self.metadata,
                       Column('id', Integer, primary_key=True),
                       Column('name', String, unique=True),
-                      Column('last_login', DateTime))
+                      Column('last_login', DateTime),
+                      Column('psw_hash', String),
+                      Column('pub_key', Text))
 
         active_users = Table('ActiveUsers', self.metadata,
                              Column('id', Integer, primary_key=True),
                              Column('user', ForeignKey('Users.id')),
                              Column('login_time', DateTime),
                              Column('ip', String),
-                             Column('port', String))
+                             Column('port', String),
+                            )
+
 
         login_history = Table('LoginHistory', self.metadata,
                               Column('id', Integer, primary_key=True),
@@ -90,18 +95,16 @@ class ServerStorage:
         self.session.query(self.ActiveUsers).delete()
         self.session.commit()
 
-    def user_login(self, username, ip, port):
+    def user_login(self, username, ip, port, key):
         res = self.session.query(self.AllUsers).filter_by(name=username)
 
         if res.count():
             user = res.first()
             user.last_login = datetime.datetime.now()
+            if user.pub_key != key:
+                user.pub_key = key
         else:
-            user = self.AllUsers(username)
-            self.session.add(user)
-            self.session.commit()
-            user_history = self.UsersHistory(user.id)
-            self.session.add(user_history)
+            raise ValueError('User not registered')
 
         new_active_user = self.ActiveUsers(user.id, ip, port, datetime.datetime.now())
         self.session.add(new_active_user)
@@ -110,6 +113,40 @@ class ServerStorage:
         self.session.add(history)
 
         self.session.commit()
+
+    def add_user(self, name, psw_hash):
+        user_row = self.AllUsers(name, psw_hash)
+        self.session.add(user_row)
+        self.session.commit()
+        history_row = self.UsersHistory(user_row.id)
+        self.session.add(history_row)
+        self.session.commit()
+
+    def remove_user(self, name):
+        user = self.session.query(self.AllUsers).filter_by(name=name).first()
+        self.session.query(self.ActiveUsers).filter_by(user=user.id).delete()
+        self.session.query(self.LoginHistory).filter_by(name=user.id).delete()
+        self.session.query(self.UsersContacts).filter_by(user=user.id).delete()
+        self.session.query(
+            self.UsersContacts).filter_by(
+            contact=user.id).delete()
+        self.session.query(self.UsersHistory).filter_by(user=user.id).delete()
+        self.session.query(self.AllUsers).filter_by(name=name).delete()
+        self.session.commit()
+
+    def get_hash(self, name):
+        user = self.session.query(self.AllUsers).filter_by(name=name).first()
+        return user.psw_hash
+
+    def get_pubkey(self, name):
+        user = self.session.query(self.AllUsers).filter_by(name=name).first()
+        return user.pub_key
+
+    def check_user(self, name):
+        if self.session.query(self.AllUsers).filter_by(name=name).count():
+            return True
+        else:
+            return False
 
     def user_logout(self, username):
         user = self.session.query(self.AllUsers).filter_by(name=username).first()
@@ -125,7 +162,6 @@ class ServerStorage:
 
         recipient_row = self.session.query(self.UsersHistory).filter_by(user=recipient).first()
         recipient_row.accepted += 1
-        print('DOSHLO SYUDA')
         self.session.commit()
 
     def add_contact(self, user, contact):

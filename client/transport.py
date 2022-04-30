@@ -1,3 +1,6 @@
+import binascii
+import hashlib
+import hmac
 import socket
 import sys
 import time
@@ -11,14 +14,15 @@ from common.const import *
 
 sock_lock = threading.Lock()
 
+
 class ClientTransport(threading.Thread, QObject):
     CLIENT_LOGGER = logging.getLogger('client_logger')
     sock_lock = threading.Lock()
 
-    new_message = pyqtSignal(str)
+    new_message = pyqtSignal(dict)
     lost_connection = pyqtSignal()
 
-    def __init__(self, account_name, database, server_address=DEFAULT_IP_ADDRESS,
+    def __init__(self, account_name, password, keys, database, server_address=DEFAULT_IP_ADDRESS,
                  server_port=DEFAULT_PORT):
         threading.Thread.__init__(self)
         QObject.__init__(self)
@@ -26,8 +30,11 @@ class ClientTransport(threading.Thread, QObject):
         self.database = database
         self.account_name = account_name
         self.transport = None
+        print('OKK')
+        self.pswd = password
+        self.keys = keys
         self.connection_init(server_port, server_address)
-
+        print('INIT DONE')
         try:
             self.users_list_update()
             self.contacts_list_update()
@@ -50,28 +57,78 @@ class ClientTransport(threading.Thread, QObject):
         self.transport.settimeout(5)
         connected = False
         for i in range(5):
-            self.CLIENT_LOGGER.info(f'Connection to server {i+1}')
+            self.CLIENT_LOGGER.info(f'Connection to server {i + 1}')
             try:
                 self.transport.connect((ip, port))
+                print('trans con')
             except (OSError, ConnectionRefusedError):
                 pass
             else:
                 connected = True
+                print('Connected true')
                 break
             time.sleep(1)
+
         if not connected:
             self.CLIENT_LOGGER.critical('Connection error')
             raise ConnectionRefusedError('Connection error')
+        print('CONNECTED')
         self.CLIENT_LOGGER.info('Connected')
 
-        try:
-            with sock_lock:
-                send_message(self.transport, self.create_presence())
-                self.answer_handler(get_message(self.transport))
-        except (OSError, json.JSONDecodeError):
-            self.CLIENT_LOGGER.critical('Connection lost')
-            raise OSError('Connection lost')
-        self.CLIENT_LOGGER.info('Connected successful')
+        passwd_bytes = self.pswd.encode('utf-8')
+        print(passwd_bytes)
+        salt = self.account_name.lower().encode('utf-8')
+        print('2')
+        passwd_hash = hashlib.pbkdf2_hmac('sha512', passwd_bytes, salt, 10000)
+        print('3')
+        passwd_hash_string = binascii.hexlify(passwd_hash)
+        print('4')
+
+        pub_key = self.keys.publickey().export_key().decode('ascii')
+
+        with sock_lock:
+            presence = {
+                ACTION: PRESENCE,
+                TIME: time.time(),
+                USER: {
+                    ACCOUNT_NAME: self.account_name,
+                    PUBLIC_KEY: pub_key
+                }
+            }
+            try:
+                send_message(self.transport, presence)
+                answer = get_message(self.transport)
+                if RESPONSE in answer:
+                    if answer[RESPONSE] == 400:
+                        raise OSError
+                    elif answer[RESPONSE] == 511:
+                        answer_data = answer[DATA]
+                        hash = hmac.new(passwd_hash_string, answer_data.encode('utf-8'), 'MD5')
+                        digest = hash.digest()
+                        my_answer = RESPONSE_511
+                        my_answer[DATA] = binascii.b2a_base64(
+                            digest).decode('ascii')
+                        send_message(self.transport, my_answer)
+                        self.answer_handler(get_message(self.transport))
+
+            except (OSError, json.JSONDecodeError) as err:
+                self.CLIENT_LOGGER.debug(f'Connection error.', exc_info=err)
+                raise OSError('Connection error')
+
+    def key_request(self, user):
+        self.CLIENT_LOGGER.debug(f'Public key for {user}')
+        req = {
+            ACTION: PUBLIC_KEY_REQUEST,
+            TIME: time.time(),
+            ACCOUNT_NAME: user
+        }
+        with sock_lock:
+            send_message(self.transport, req)
+            ans = get_message(self.transport)
+        if RESPONSE in ans and ans[RESPONSE] == 511:
+            return ans[DATA]
+        else:
+            self.CLIENT_LOGGER.error(f'Key Error {user}.')
 
     def create_presence(self):
         out_mes = {
@@ -95,9 +152,8 @@ class ClientTransport(threading.Thread, QObject):
         elif ACTION in message and message[ACTION] == MESSAGE and SENDER in message and DESTINATION in message \
                 and MESSAGE_TEXT in message and message[DESTINATION] == self.account_name:
             self.CLIENT_LOGGER.debug(f'Received message from {message[SENDER]}:{message[MESSAGE_TEXT]}')
-            self.database.save_message(message[SENDER], 'in', message[MESSAGE_TEXT])
-            print('MESSAGE RECEIVED')
-            self.new_message.emit(message[SENDER])
+            
+            self.new_message.emit(message)
 
     def contacts_list_update(self):
         msg = {
@@ -207,7 +263,3 @@ class ClientTransport(threading.Thread, QObject):
                     self.answer_handler(message)
                 finally:
                     self.transport.settimeout(5)
-
-
-
-
