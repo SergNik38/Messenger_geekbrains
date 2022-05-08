@@ -6,6 +6,7 @@ import datetime
 
 
 class ServerStorage:
+    """Server database class"""
     class AllUsers:
         def __init__(self, username, psw_hash):
             self.name = username

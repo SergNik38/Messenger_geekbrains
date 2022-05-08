@@ -16,6 +16,7 @@ sock_lock = threading.Lock()
 
 
 class ClientTransport(threading.Thread, QObject):
+    """Main client class"""
     CLIENT_LOGGER = logging.getLogger('client_logger')
     sock_lock = threading.Lock()
 

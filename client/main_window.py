@@ -18,6 +18,7 @@ logger = logging.getLogger('client_logger')
 
 
 class ClientMainWindow(QMainWindow):
+    """Main window of client GUI"""
     def __init__(self, database, transport, keys):
         super().__init__()
         self.database = database

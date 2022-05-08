@@ -17,6 +17,7 @@ conflag_lock = threading.Lock()
 
 
 class MessageProcessor(threading.Thread):
+    """Main server class"""
     SERVER_LOGGER = logging.getLogger('server_logger')
     port = Port()
 

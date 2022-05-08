@@ -6,6 +6,7 @@ import os
 
 
 class ClientDatabase:
+    """Clients database"""
     class KnownUsers:
         def __init__(self, user):
             self.id = None

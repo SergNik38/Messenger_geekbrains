@@ -8,6 +8,7 @@ from server.remove_user import DeleteUserDialog
 
 
 class MainWindow(QMainWindow):
+    """Main GUI server window"""
     def __init__(self, db, server, config):
         super().__init__()
         self.db = db
