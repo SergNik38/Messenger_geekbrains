@@ -41,10 +41,10 @@ while True:
                     f' script "python3 {PATH_TO_SCRIPT_CLIENTS}"\'',
                     shell=True))
             # CLIENTS.append(
-                # Popen(
-                #     f'osascript -e \'tell application "Terminal" to do'
-                #     f' script "python3 {PATH_TO_SCRIPT_CLIENTS} -m send"\'',
-                #     shell=True))
+            # Popen(
+            #     f'osascript -e \'tell application "Terminal" to do'
+            #     f' script "python3 {PATH_TO_SCRIPT_CLIENTS} -m send"\'',
+            #     shell=True))
             # Задержка для того, что бы отправляющий процесс успел
             # зарегистрироваться на сервере, и потом в словаре имен
             # клиентов остался только слушающий клиент

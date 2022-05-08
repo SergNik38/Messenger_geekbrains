@@ -18,8 +18,8 @@ class Log:
             LOGGER.debug(
                 f'Called function {func.__name__} with params {args, kwargs}. '
                 f'From module {func.__module__}. '
-                f'From function {traceback.format_stack()[0].strip().split()[-1]}. ', stacklevel=2
-            )
+                f'From function {traceback.format_stack()[0].strip().split()[-1]}. ',
+                stacklevel=2)
             return res
 
         return create_log

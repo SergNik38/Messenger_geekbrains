@@ -11,9 +11,6 @@ import os
 from Crypto.PublicKey import RSA
 
 
-
-
-
 CLIENT_LOGGER = logging.getLogger('client_logger')
 
 
@@ -61,14 +58,18 @@ if __name__ == '__main__':
     database = ClientDatabase(client_name)
 
     try:
-        transport = ClientTransport(client_name, client_passwd, keys, database,
-                                    server_address=server_address, server_port=server_port)
+        transport = ClientTransport(
+            client_name,
+            client_passwd,
+            keys,
+            database,
+            server_address=server_address,
+            server_port=server_port)
         print('OK')
-    except:
+    except BaseException:
         exit(1)
     transport.daemon = True
     transport.start()
-
 
     main_window = ClientMainWindow(database, transport, keys)
     main_window.make_connection(transport)
@@ -77,4 +78,3 @@ if __name__ == '__main__':
 
     transport.shutdown()
     transport.join()
-

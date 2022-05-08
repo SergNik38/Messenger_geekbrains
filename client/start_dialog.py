@@ -1,5 +1,6 @@
-from PyQt5.QtWidgets import QDialog, QPushButton, QLineEdit, QApplication, QLabel , qApp
+from PyQt5.QtWidgets import QDialog, QPushButton, QLineEdit, QApplication, QLabel, qApp
 from PyQt5.QtCore import QEvent
+
 
 class UserNameDialog(QDialog):
     def __init__(self):
@@ -36,7 +37,6 @@ class UserNameDialog(QDialog):
         self.client_passwd.setEchoMode(QLineEdit.Password)
 
         self.show()
-
 
     def click(self):
         if self.client_name.text():

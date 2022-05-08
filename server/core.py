@@ -20,7 +20,11 @@ class MessageProcessor(threading.Thread):
     SERVER_LOGGER = logging.getLogger('server_logger')
     port = Port()
 
-    def __init__(self, database, server_address=DEFAULT_IP_ADDRESS, server_port=DEFAULT_PORT):
+    def __init__(
+            self,
+            database,
+            server_address=DEFAULT_IP_ADDRESS,
+            server_port=DEFAULT_PORT):
         self.server_address = server_address
         self.server_port = int(server_port)
         self.database = database
@@ -32,7 +36,8 @@ class MessageProcessor(threading.Thread):
 
     def run(self):
         global new_connection
-        self.SERVER_LOGGER.info(f'Server object created address: {self.server_address}, port: {self.server_port}')
+        self.SERVER_LOGGER.info(
+            f'Server object created address: {self.server_address}, port: {self.server_port}')
         transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         transport.bind((self.server_address, self.server_port))
         transport.settimeout(0.5)
@@ -52,23 +57,27 @@ class MessageProcessor(threading.Thread):
             err_lst = []
             try:
                 if self.clients:
-                    recv_data_lst, send_data_lst, err_lst = select.select(self.clients, self.clients, [], 0)
+                    recv_data_lst, send_data_lst, err_lst = select.select(
+                        self.clients, self.clients, [], 0)
             except OSError:
                 pass
 
             if recv_data_lst:
                 for client_msg in recv_data_lst:
                     try:
-                        self.client_message_handler(get_message(client_msg), client_msg)
-                    except:
-                        self.SERVER_LOGGER.error(f'Client {client_msg.getpeername()} disconnected')
+                        self.client_message_handler(
+                            get_message(client_msg), client_msg)
+                    except BaseException:
+                        self.SERVER_LOGGER.error(
+                            f'Client {client_msg.getpeername()} disconnected')
                         self.remove_client(client_msg)
 
             for msg in self.messages:
                 try:
                     self.message_handler(msg, send_data_lst)
-                except:
-                    self.SERVER_LOGGER.info(f'Connection with {msg[DESTINATION]} lost.')
+                except BaseException:
+                    self.SERVER_LOGGER.info(
+                        f'Connection with {msg[DESTINATION]} lost.')
                     self.remove_client(self.names[msg[DESTINATION]])
                     self.database.user_logout(msg[DESTINATION])
                     del self.names[msg[DESTINATION]]
@@ -90,7 +99,8 @@ class MessageProcessor(threading.Thread):
                 and MESSAGE_TEXT in message and DESTINATION in message and SENDER in message:
             if message[DESTINATION] in self.names:
                 self.messages.append(message)
-                self.database.message_handler(message[SENDER], message[DESTINATION])
+                self.database.message_handler(
+                    message[SENDER], message[DESTINATION])
                 send_message(client, RESPONSE_200)
             else:
                 response = RESPONSE_400
@@ -115,7 +125,8 @@ class MessageProcessor(threading.Thread):
 
         elif ACTION in message and message[ACTION] == USERS_REQUEST and ACCOUNT_NAME in message:
             response = RESPONSE_202
-            response[LIST_INFO] = [user[0] for user in self.database.list_users()]
+            response[LIST_INFO] = [user[0]
+                                   for user in self.database.list_users()]
             send_message(client, response)
 
         elif ACTION in message and message[ACTION] == EXIT and ACCOUNT_NAME in message \
@@ -153,7 +164,8 @@ class MessageProcessor(threading.Thread):
             return
 
     def message_handler(self, message, listen_socks):
-        if message[DESTINATION] in self.names and self.names[message[DESTINATION]] in listen_socks:
+        if message[DESTINATION] in self.names and self.names[message[DESTINATION]
+                                                             ] in listen_socks:
             print(f'MESSAGE HANDLER \n {self.names[message[DESTINATION]]}')
             send_message(self.names[message[DESTINATION]], message)
             self.SERVER_LOGGER.info(f'Message to {message[DESTINATION]} '
@@ -161,10 +173,12 @@ class MessageProcessor(threading.Thread):
         elif message[DESTINATION] in self.names and self.names[message[DESTINATION]] not in listen_socks:
             raise ConnectionError
         else:
-            self.SERVER_LOGGER.error(f'User {message[DESTINATION]} not registered')
+            self.SERVER_LOGGER.error(
+                f'User {message[DESTINATION]} not registered')
 
     def authorize_user(self, message, sock):
-        self.SERVER_LOGGER.debug(f'Starting auth process for user {message[USER]}')
+        self.SERVER_LOGGER.debug(
+            f'Starting auth process for user {message[USER]}')
         if message[USER][ACCOUNT_NAME] in self.names.keys():
             resp = RESPONSE_400
             resp[ERROR] = 'Username already exists'
@@ -188,13 +202,18 @@ class MessageProcessor(threading.Thread):
             self.remove_client(sock)
             sock.close()
         else:
-            self.SERVER_LOGGER.debug('Correct username, starting password check.')
+            self.SERVER_LOGGER.debug(
+                'Correct username, starting password check.')
             print('Correct username, psw check')
             msg_auth = RESPONSE_511
             random_str = binascii.hexlify(os.urandom(64))
             msg_auth[DATA] = random_str.decode('ascii')
             print('before hash')
-            hash = hmac.new(self.database.get_hash(message[USER][ACCOUNT_NAME]), random_str, 'MD5')
+            hash = hmac.new(
+                self.database.get_hash(
+                    message[USER][ACCOUNT_NAME]),
+                random_str,
+                'MD5')
             print(f'after hash {hash}')
             digest = hash.digest()
             self.SERVER_LOGGER.debug(f'Auth message = {msg_auth}')

@@ -70,7 +70,9 @@ class RegisterUser(QDialog):
             password_b = self.client_passwd.text().encode('utf-8')
             salt = self.client_name.text().lower().encode('utf-8')
             psw_hash = hashlib.pbkdf2_hmac('sha512', password_b, salt, 10000)
-            self.database.add_user(self.client_name.text(), binascii.hexlify(psw_hash))
+            self.database.add_user(
+                self.client_name.text(),
+                binascii.hexlify(psw_hash))
             self.messages.information(self, 'Success', 'User created')
             self.server.service_update_lists()
             self.close()

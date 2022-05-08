@@ -17,7 +17,6 @@ import json
 logger = logging.getLogger('client_logger')
 
 
-
 class ClientMainWindow(QMainWindow):
     def __init__(self, database, transport, keys):
         super().__init__()
@@ -44,7 +43,8 @@ class ClientMainWindow(QMainWindow):
         self.current_chat = None
         self.current_chat_key = None
         self.encryptor = None
-        self.ui.list_messages.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.ui.list_messages.setHorizontalScrollBarPolicy(
+            Qt.ScrollBarAlwaysOff)
         self.ui.list_messages.setWordWrap(True)
 
         self.ui.list_contacts.doubleClicked.connect(self.select_active_user)
@@ -68,7 +68,10 @@ class ClientMainWindow(QMainWindow):
         self.current_chat_key = None
 
     def history_list_update(self):
-        lst = sorted(self.database.get_history(self.current_chat), key=lambda item: item[3])
+        lst = sorted(
+            self.database.get_history(
+                self.current_chat),
+            key=lambda item: item[3])
         if not self.history_model:
             self.history_model = QStandardItemModel()
             self.ui.list_messages.setModel(self.history_model)
@@ -83,13 +86,15 @@ class ClientMainWindow(QMainWindow):
         for i in range(start_idx, length):
             item = lst[i]
             if item[1] == 'in':
-                msg = QStandardItem(f'Incoming message from {item[3].replace(microsecond=0)}:\n {item[2]}')
+                msg = QStandardItem(
+                    f'Incoming message from {item[3].replace(microsecond=0)}:\n {item[2]}')
                 msg.setEditable(False)
                 msg.setBackground(QBrush(QColor(255, 213, 213)))
                 msg.setTextAlignment(Qt.AlignLeft)
                 self.history_model.appendRow(msg)
             else:
-                msg = QStandardItem(f'Outgoing message from {item[3].replace(microsecond=0)}:\n {item[2]}')
+                msg = QStandardItem(
+                    f'Outgoing message from {item[3].replace(microsecond=0)}:\n {item[2]}')
                 msg.setEditable(False)
                 msg.setTextAlignment(Qt.AlignRight)
                 msg.setBackground(QBrush(QColor(204, 255, 204)))
@@ -138,7 +143,8 @@ class ClientMainWindow(QMainWindow):
     def add_contact_window(self):
         global select_dialog
         select_dialog = AddContactDialog(self.transport, self.database)
-        select_dialog.btn_ok.clicked.connect(lambda: self.add_contact_action(select_dialog))
+        select_dialog.btn_ok.clicked.connect(
+            lambda: self.add_contact_action(select_dialog))
         select_dialog.show()
 
     def add_contact_action(self, item):
@@ -165,7 +171,8 @@ class ClientMainWindow(QMainWindow):
     def delete_contact_window(self):
         global remove_dialog
         remove_dialog = DelContactDialog(self.database)
-        remove_dialog.btn_ok.clicked.connect(lambda: self.delete_contact(remove_dialog))
+        remove_dialog.btn_ok.clicked.connect(
+            lambda: self.delete_contact(remove_dialog))
         remove_dialog.show()
 
     def delete_contact(self, item):
@@ -197,8 +204,9 @@ class ClientMainWindow(QMainWindow):
         message_text_encrypted_base64 = base64.b64encode(
             message_text_encrypted)
         try:
-            self.transport.send_message(self.current_chat,
-                                        message_text_encrypted_base64.decode('ascii'))
+            self.transport.send_message(
+                self.current_chat,
+                message_text_encrypted_base64.decode('ascii'))
             pass
         except OSError as err:
             if err.errno:
@@ -210,7 +218,8 @@ class ClientMainWindow(QMainWindow):
             self.close()
         else:
             self.database.save_message(self.current_chat, 'out', message_text)
-            logger.debug(f'Message sent to {self.current_chat}: {message_text}')
+            logger.debug(
+                f'Message sent to {self.current_chat}: {message_text}')
             self.history_list_update()
 
     @pyqtSlot(dict)
@@ -234,15 +243,21 @@ class ClientMainWindow(QMainWindow):
             self.history_list_update()
         else:
             if self.database.check_contact(sender):
-                if self.messages.question(self, 'New message', f'New message from {sender}, open chat?',
-                                          QMessageBox.Yes, QMessageBox.No) == QMessageBox.Yes:
+                if self.messages.question(
+                    self,
+                    'New message',
+                    f'New message from {sender}, open chat?',
+                    QMessageBox.Yes,
+                        QMessageBox.No) == QMessageBox.Yes:
                     self.current_chat = sender
                     self.set_active_user()
             else:
-                if self.messages.question(self, 'New message',
-                                          f'New message from {sender}.\n This user not in contact list.\n Add this user to contact list?',
-                                          QMessageBox.Yes,
-                                          QMessageBox.No) == QMessageBox.Yes:
+                if self.messages.question(
+                    self,
+                    'New message',
+                    f'New message from {sender}.\n This user not in contact list.\n Add this user to contact list?',
+                    QMessageBox.Yes,
+                        QMessageBox.No) == QMessageBox.Yes:
                     self.add_contact(sender)
                     self.current_chat = sender
                     self.set_active_user()

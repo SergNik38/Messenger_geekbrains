@@ -56,7 +56,8 @@ class ConfigWindow(QDialog):
         self.ip_label.move(10, 148)
         self.ip_label.setFixedSize(180, 15)
 
-        self.ip_label_note = QLabel(' leave this field empty\n to accept connections from any IP address', self)
+        self.ip_label_note = QLabel(
+            ' leave this field empty\n to accept connections from any IP address', self)
         self.ip_label_note.move(10, 168)
         self.ip_label_note.setFixedSize(500, 30)
 

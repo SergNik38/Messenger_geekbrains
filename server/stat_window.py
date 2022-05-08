@@ -36,7 +36,8 @@ class StatWindow(QDialog):
             user, last_logged, sent, received = row
             user = QStandardItem(user)
             user.setEditable(False)
-            last_logged = QStandardItem(str(last_logged.replace(microsecond=0)))
+            last_logged = QStandardItem(
+                str(last_logged.replace(microsecond=0)))
             last_logged.setEditable(False)
             sent = QStandardItem(str(sent))
             sent.setEditable(False)

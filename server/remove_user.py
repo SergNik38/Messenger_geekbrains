@@ -2,7 +2,6 @@ from PyQt5.QtWidgets import QDialog, QLabel, QComboBox, QPushButton
 from PyQt5.QtCore import Qt
 
 
-
 class DeleteUserDialog(QDialog):
     def __init__(self, database, server):
         super().__init__()

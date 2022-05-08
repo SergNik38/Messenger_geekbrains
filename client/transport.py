@@ -22,8 +22,14 @@ class ClientTransport(threading.Thread, QObject):
     new_message = pyqtSignal(dict)
     lost_connection = pyqtSignal()
 
-    def __init__(self, account_name, password, keys, database, server_address=DEFAULT_IP_ADDRESS,
-                 server_port=DEFAULT_PORT):
+    def __init__(
+            self,
+            account_name,
+            password,
+            keys,
+            database,
+            server_address=DEFAULT_IP_ADDRESS,
+            server_port=DEFAULT_PORT):
         threading.Thread.__init__(self)
         QObject.__init__(self)
 
@@ -52,7 +58,8 @@ class ClientTransport(threading.Thread, QObject):
         if port < 1024 or port > 65535:
             self.CLIENT_LOGGER.critical('Invalid port')
             raise ValueError
-        self.CLIENT_LOGGER.info(f'Client created, Account: {self.account_name}')
+        self.CLIENT_LOGGER.info(
+            f'Client created, Account: {self.account_name}')
         self.transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.transport.settimeout(5)
         connected = False
@@ -103,7 +110,8 @@ class ClientTransport(threading.Thread, QObject):
                         raise OSError
                     elif answer[RESPONSE] == 511:
                         answer_data = answer[DATA]
-                        hash = hmac.new(passwd_hash_string, answer_data.encode('utf-8'), 'MD5')
+                        hash = hmac.new(
+                            passwd_hash_string, answer_data.encode('utf-8'), 'MD5')
                         digest = hash.digest()
                         my_answer = RESPONSE_511
                         my_answer[DATA] = binascii.b2a_base64(
@@ -151,8 +159,9 @@ class ClientTransport(threading.Thread, QObject):
                 raise ValueError('Answer error')
         elif ACTION in message and message[ACTION] == MESSAGE and SENDER in message and DESTINATION in message \
                 and MESSAGE_TEXT in message and message[DESTINATION] == self.account_name:
-            self.CLIENT_LOGGER.debug(f'Received message from {message[SENDER]}:{message[MESSAGE_TEXT]}')
-            
+            self.CLIENT_LOGGER.debug(
+                f'Received message from {message[SENDER]}:{message[MESSAGE_TEXT]}')
+
             self.new_message.emit(message)
 
     def contacts_list_update(self):
@@ -259,7 +268,8 @@ class ClientTransport(threading.Thread, QObject):
                     self.running = False
                     self.lost_connection.emit()
                 else:
-                    self.CLIENT_LOGGER.debug(f'Received message from server {message}')
+                    self.CLIENT_LOGGER.debug(
+                        f'Received message from server {message}')
                     self.answer_handler(message)
                 finally:
                     self.transport.settimeout(5)

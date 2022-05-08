@@ -20,8 +20,6 @@ new_connection = False
 conflag_lock = threading.Lock()
 
 
-
-
 def main():
     config = configparser.ConfigParser()
 
@@ -33,7 +31,10 @@ def main():
                      config['SETTINGS']['database_file'])
     )
 
-    server = MessageProcessor(database, server_address=listen_address, server_port=listen_port)
+    server = MessageProcessor(
+        database,
+        server_address=listen_address,
+        server_port=listen_port)
     server.daemon = True
     server.start()
     # print_help()
@@ -43,7 +44,6 @@ def main():
     main_window = MainWindow(database, server, config)
     server_app.exec_()
     server.running = False
-
 
     # while True:
     #     command = input('Input command: ')

@@ -43,8 +43,12 @@ class ServerStorage:
             self.accepted = 0
 
     def __init__(self, path):
-        self.db_engine = create_engine(f'sqlite:///{path}', echo=False, pool_recycle=7200,
-                                       connect_args={'check_same_thread': False})
+        self.db_engine = create_engine(
+            f'sqlite:///{path}',
+            echo=False,
+            pool_recycle=7200,
+            connect_args={
+                'check_same_thread': False})
         self.metadata = MetaData()
 
         users = Table('Users', self.metadata,
@@ -60,8 +64,7 @@ class ServerStorage:
                              Column('login_time', DateTime),
                              Column('ip', String),
                              Column('port', String),
-                            )
-
+                             )
 
         login_history = Table('LoginHistory', self.metadata,
                               Column('id', Integer, primary_key=True),
@@ -106,7 +109,8 @@ class ServerStorage:
         else:
             raise ValueError('User not registered')
 
-        new_active_user = self.ActiveUsers(user.id, ip, port, datetime.datetime.now())
+        new_active_user = self.ActiveUsers(
+            user.id, ip, port, datetime.datetime.now())
         self.session.add(new_active_user)
 
         history = self.LoginHistory(user.id, datetime.datetime.now(), ip, port)
@@ -149,26 +153,41 @@ class ServerStorage:
             return False
 
     def user_logout(self, username):
-        user = self.session.query(self.AllUsers).filter_by(name=username).first()
+        user = self.session.query(
+            self.AllUsers).filter_by(
+            name=username).first()
         self.session.query(self.ActiveUsers).filter_by(user=user.id).delete()
         self.session.commit()
 
     def message_handler(self, sender, recipient):
-        sender = self.session.query(self.AllUsers).filter_by(name=sender).first().id
-        recipient = self.session.query(self.AllUsers).filter_by(name=recipient).first().id
+        sender = self.session.query(
+            self.AllUsers).filter_by(
+            name=sender).first().id
+        recipient = self.session.query(
+            self.AllUsers).filter_by(
+            name=recipient).first().id
 
-        sender_row = self.session.query(self.UsersHistory).filter_by(user=sender).first()
+        sender_row = self.session.query(
+            self.UsersHistory).filter_by(
+            user=sender).first()
         sender_row.sent += 1
 
-        recipient_row = self.session.query(self.UsersHistory).filter_by(user=recipient).first()
+        recipient_row = self.session.query(
+            self.UsersHistory).filter_by(
+            user=recipient).first()
         recipient_row.accepted += 1
         self.session.commit()
 
     def add_contact(self, user, contact):
         user = self.session.query(self.AllUsers).filter_by(name=user).first()
-        contact = self.session.query(self.AllUsers).filter_by(name=contact).first()
+        contact = self.session.query(
+            self.AllUsers).filter_by(
+            name=contact).first()
 
-        if not contact or self.session.query(self.UsersContacts).filter_by(user=user.id, contact=contact.id).count():
+        if not contact or self.session.query(
+                self.UsersContacts).filter_by(
+                user=user.id,
+                contact=contact.id).count():
             return
 
         contact_row = self.UsersContacts(user.id, contact.id)
@@ -177,7 +196,9 @@ class ServerStorage:
 
     def del_contact(self, user, contact):
         user = self.session.query(self.AllUsers).filter_by(name=user).first()
-        contact = self.session.query(self.AllUsers).filter_by(name=contact).first()
+        contact = self.session.query(
+            self.AllUsers).filter_by(
+            name=contact).first()
 
         if not contact:
             return
@@ -190,8 +211,12 @@ class ServerStorage:
 
     def get_contacts(self, user):
         user = self.session.query(self.AllUsers).filter_by(name=user).one()
-        query = self.session.query(self.UsersContacts, self.AllUsers.name).filter_by(user=user.id). \
-            join(self.AllUsers, self.UsersContacts.contact == self.AllUsers.id)
+        query = self.session.query(
+            self.UsersContacts,
+            self.AllUsers.name).filter_by(
+            user=user.id). join(
+            self.AllUsers,
+            self.UsersContacts.contact == self.AllUsers.id)
 
         return [contact[1] for contact in query.all()]
 

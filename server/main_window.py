@@ -39,7 +39,6 @@ class MainWindow(QMainWindow):
         self.toolbar.addAction(self.register_btn)
         self.toolbar.addAction(self.remove_btn)
 
-
         self.setFixedSize(800, 600)
         self.setWindowTitle('Messaging server prealpha release')
 
@@ -65,7 +64,8 @@ class MainWindow(QMainWindow):
     def create_user_model(self):
         users_list = self.db.list_active_users()
         lst = QStandardItemModel()
-        lst.setHorizontalHeaderLabels(['Account name', 'IP address', 'Port', 'Connection time'])
+        lst.setHorizontalHeaderLabels(
+            ['Account name', 'IP address', 'Port', 'Connection time'])
         for row in users_list:
             user, ip, port, time = row
             user = QStandardItem(user)
